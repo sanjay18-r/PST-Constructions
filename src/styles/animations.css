@@ -1,0 +1,15 @@
+.fade-up{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+.zoom{
+
+transform:scale(.95);
+
+opacity:0;
+
+}

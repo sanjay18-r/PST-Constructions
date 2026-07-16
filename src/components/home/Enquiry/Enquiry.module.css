@@ -1,0 +1,264 @@
+.enquiry {
+  position: relative;
+  padding: 140px 0;
+  background: var(--background);
+  overflow: hidden;
+}
+
+.enquiry::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  left: -180px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle,
+      rgba(197, 160, 89,.08),
+      transparent 70%);
+}
+
+.enquiry::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  bottom: -180px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle,
+      rgba(17, 20, 23,.05),
+      transparent 70%);
+}
+
+/* ========================= */
+
+.wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+/* ========================= */
+/* LEFT */
+/* ========================= */
+
+.left{
+    position:relative;
+    z-index:2;
+}
+
+.tag{
+    display:inline-block;
+    padding:10px 24px;
+    border-radius: var(--radius-sm);
+    background:rgba(197, 160, 89,.12);
+    color:var(--gold);
+    font-size:.9rem;
+    font-weight:600;
+}
+
+.line{
+    width:90px;
+    height:4px;
+    margin:22px 0;
+    border-radius: var(--radius-sm);
+    background:linear-gradient(90deg,var(--gold),transparent);
+}
+
+.left h2{
+    font-size:clamp(2.8rem,5vw,4.2rem);
+    line-height:1.15;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.left p{
+    color:var(--text-light);
+    line-height:1.9;
+    margin-bottom:40px;
+}
+
+/* ========================= */
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.info div{
+    background:white;
+    padding:28px;
+    text-align:center;
+    border-radius: var(--radius-sm);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.info div:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 45px rgba(0,0,0,.14);
+}
+
+.info h3{
+    color:var(--gold);
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+.info span{
+    color:var(--text-light);
+    font-size:.95rem;
+}
+
+/* ========================= */
+/* FORM */
+/* ========================= */
+
+.formBox{
+    background:white;
+    border-radius:var(--radius-lg);
+    border: 1px solid var(--border);
+    padding:45px;
+    box-shadow:0 10px 40px rgba(0,0,0,.03);
+}
+
+.inputGroup{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:var(--background);
+    padding:16px 20px;
+    border-radius:var(--radius-sm);
+    margin-bottom:20px;
+    border:1px solid var(--border);
+    transition:var(--transition);
+}
+
+.inputGroup:focus-within{
+    border-color:var(--gold);
+}
+
+.inputGroup svg{
+    color:var(--gold);
+    font-size:1.1rem;
+    flex-shrink:0;
+}
+
+.inputGroup input,
+.inputGroup select{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:1rem;
+    color:var(--text-dark);
+}
+
+textarea{
+    width:100%;
+    padding:20px;
+    border:1px solid var(--border);
+    outline:none;
+    resize:none;
+    border-radius:var(--radius-sm);
+    background:var(--background);
+    margin-bottom:25px;
+    transition:var(--transition);
+    font-size:1rem;
+    color:var(--text-dark);
+    font-family:inherit;
+}
+
+textarea:focus{
+    border-color:var(--gold);
+}
+
+/* ========================= */
+
+button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:var(--radius-sm);
+    background:linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-hover)
+    );
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:var(--transition);
+    box-shadow:0 8px 20px rgba(197,160,89,.20);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(197,160,89,.35);
+}
+
+/* ========================= */
+
+@media(max-width:1100px){
+
+.wrapper{
+grid-template-columns:1fr;
+}
+
+.info{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.enquiry{
+padding:100px 0;
+}
+
+.left{
+text-align:center;
+}
+
+.line{
+margin:22px auto;
+}
+
+.left h2{
+font-size:2.3rem;
+}
+
+.info{
+grid-template-columns:1fr;
+}
+
+.formBox{
+padding:30px 22px;
+}
+
+}
+
+@media (max-width:360px) {
+  .enquiry {
+    padding: 50px 0;
+  }
+  .formBox {
+    padding: 20px 15px;
+    border-radius: var(--radius-sm);
+  }
+  .inputGroup {
+    padding: 12px 15px;
+    margin-bottom: 15px;
+  }
+  textarea {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  button {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+}

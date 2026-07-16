@@ -1,0 +1,100 @@
+.hero {
+    position: relative;
+    padding-top: 140px;
+    padding-bottom: 60px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(197, 160, 89, 0.15), transparent 50%);
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    color: white;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: var(--radius-sm);
+    background: rgba(197, 160, 89, 0.15);
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff !important;
+}
+
+.content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-light) !important;
+    margin-bottom: 25px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: white;
+}
+
+.breadcrumb svg {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 45vh;
+        min-height: 350px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .breadcrumb {
+        justify-content: center;
+    }
+
+    .content h1 {
+        font-size: 2.3rem;
+    }
+
+    .content p {
+        font-size: 0.95rem;
+    }
+}

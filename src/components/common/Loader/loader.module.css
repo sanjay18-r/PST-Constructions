@@ -1,0 +1,147 @@
+.loader{
+    position:fixed;
+    inset:0;
+    background:#090D16;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    z-index:999999;
+}
+
+/* Yellow Grid Pattern */
+.grid{
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255, 199, 44, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 199, 44, 0.04) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 20s linear infinite;
+    opacity:.5;
+}
+
+/* Amber Glow */
+.glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,
+      rgba(255, 199, 44, 0.15),
+      transparent 70%);
+    filter:blur(80px);
+    animation:pulse 3s infinite;
+}
+
+.content{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    z-index:5;
+}
+
+/* Site Under Preparation Alert badge */
+.warningAlert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--primary);
+  border: 3px solid var(--primary);
+  padding: 8px 16px;
+  font-family: 'Black Ops One', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  box-shadow: 4px 4px 0px #FF7A00;
+  animation: blinkAlert 1.5s step-end infinite;
+}
+
+.warningAlert svg {
+  color: #D32F2F; /* Safety Red Exclamation */
+  font-size: 1.1rem;
+}
+
+.logo{
+    width:150px;
+    margin-bottom:20px;
+    filter: drop-shadow(0 0 10px rgba(255, 199, 44, 0.3));
+}
+
+.content h1{
+    color:white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size:4rem;
+    letter-spacing:4px;
+    margin-bottom:5px;
+    text-shadow: 2px 2px 0px var(--primary);
+}
+
+.content p{
+    color:var(--gold);
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing:5px;
+    margin-bottom:35px;
+    font-size:1.05rem;
+}
+
+/* Progress bar styled as hazard tape */
+.progress{
+    width:320px;
+    height:18px;
+    background:#111116;
+    border: 3px solid var(--primary);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+    overflow:hidden;
+}
+
+.bar{
+    width:0;
+    height:100%;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--gold),
+      var(--gold) 10px,
+      #111116 10px,
+      #111116 20px
+    );
+    background-size: 40px 40px;
+    animation: stripeScroll 0.8s linear infinite;
+}
+
+/* Animations */
+@keyframes pulse{
+  0%,100%{
+    transform:scale(1);
+    opacity: 0.8;
+  }
+  50%{
+    transform:scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes gridMove{
+  0%{
+    transform:translateY(0);
+  }
+  100%{
+    transform:translateY(40px);
+  }
+}
+
+@keyframes stripeScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes blinkAlert {
+  from, to { border-color: var(--primary); }
+  50% { border-color: #FF7A00; }
+}

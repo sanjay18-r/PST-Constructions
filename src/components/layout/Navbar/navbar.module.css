@@ -1,0 +1,227 @@
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    transition: var(--transition);
+    /* Top neon safety stripe */
+    border-top: 5px solid var(--gold);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.scrolled{
+    background: #0F172A;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-bottom: 2px solid var(--gold);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+}
+
+.logo img{
+    height:45px;
+    width:auto;
+    object-fit:contain;
+    transition:.4s;
+}
+
+.navLinks{
+    color: var(--primary);
+    display:flex;
+    align-items:center;
+    gap:42px;
+}
+
+.navLinks a{
+    color:#F8FAFC;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position:relative;
+    transition:.2s;
+}
+
+.navLinks a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:3px;
+    background:var(--gold);
+    transition:.2s;
+}
+
+.navLinks a:hover{
+    color:var(--gold);
+}
+
+.navLinks a:hover::after{
+    width:100%;
+}
+
+.cta{
+    background:var(--gold);
+    color:var(--primary);
+    padding:10px 24px;
+    border-radius:var(--radius-sm);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-weight:800;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+    transition:var(--transition);
+}
+
+.cta:hover{
+    transform:translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--primary);
+    background:var(--gold-hover);
+}
+.navLinks a,
+.navLinks span {
+  cursor: pointer;
+}
+
+.active {
+  color: var(--gold) !important;
+}
+
+.active::after {
+  width: 100% !important;
+}
+
+/* ===============================
+   MOBILE NAVIGATION
+   =============================== */
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  z-index: 10001;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.hamburger:hover {
+  color: var(--gold);
+}
+
+.mobileNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: #0F172A;
+  border-left: 4px solid var(--gold);
+  box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.mobileLinks li {
+  width: 100%;
+  text-align: center;
+}
+
+.mobileLinks a {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s;
+  display: block;
+  padding: 10px 0;
+}
+
+.mobileLinks a:hover,
+.mobileActive {
+  color: var(--gold) !important;
+}
+
+.mobileCta {
+  background: var(--gold);
+  color: var(--primary) !important;
+  padding: 12px 24px !important;
+  border-radius: var(--radius-sm);
+  font-size: 1.3rem !important;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800 !important;
+  margin-top: 15px;
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  display: inline-block !important;
+  width: auto !important;
+}
+
+.mobileCta:hover {
+  background: var(--gold-hover);
+}
+
+/* ===============================
+   RESPONSIVE MEDIA QUERIES
+   =============================== */
+
+@media (max-width: 991px) {
+  .desktopNav,
+  .cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileNav {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileNav {
+    align-items: flex-start;
+    padding: 70px 15px 30px;
+    overflow-y: auto;
+  }
+  .mobileLinks {
+    gap: 15px;
+  }
+  .mobileLinks a {
+    font-size: 1.3rem;
+    padding: 6px 0;
+  }
+  .mobileCta {
+    font-size: 1.1rem !important;
+    padding: 10px 20px !important;
+    margin-top: 10px;
+  }
+}

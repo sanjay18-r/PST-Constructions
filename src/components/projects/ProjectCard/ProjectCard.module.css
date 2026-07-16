@@ -1,0 +1,145 @@
+.card{
+    background:#fff;
+    border-radius:var(--radius-sm);
+    border: 3px solid var(--primary);
+    overflow:hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover{
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--primary);
+}
+
+.imageBox{
+    position:relative;
+    border-bottom: 3px solid var(--primary);
+}
+
+.imageBox img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.status{
+    position:absolute;
+    top:20px;
+    left:20px;
+    padding:6px 14px;
+    border-radius: var(--radius-sm);
+    color:#fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size:.9rem;
+    font-weight:800;
+    text-transform: uppercase;
+    border: 2px solid var(--primary);
+    box-shadow: 2px 2px 0px var(--primary);
+}
+
+.completed{
+    background:#16a34a;
+}
+
+.ongoing{
+    background:#f59e0b;
+}
+
+.upcoming{
+    background:#2563eb;
+}
+
+.content{
+    padding:28px;
+}
+
+.category{
+    color:var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight:800;
+    font-size:1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.content h3{
+    margin:12px 0;
+    color:var(--text-dark);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:18px 0;
+    color:var(--text-light);
+    font-size:.9rem;
+}
+
+.meta span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
+}
+
+.content p{
+    color:var(--text-light);
+    line-height:1.75;
+    margin-bottom:24px;
+}
+
+.button{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--primary);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight:800;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    transition: .2s;
+}
+
+.button:hover{
+    gap:15px;
+    color: var(--gold-hover);
+}
+
+@media(max-width:768px){
+    .meta{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+
+@media (max-width:360px) {
+  .content {
+    padding: 18px;
+  }
+  .content h3 {
+    font-size: 1.4rem;
+    margin: 8px 0;
+  }
+  .meta {
+    margin: 12px 0;
+    gap: 8px;
+  }
+  .content p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .imageBox img {
+    height: 180px;
+  }
+}

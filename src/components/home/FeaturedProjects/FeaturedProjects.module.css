@@ -1,0 +1,140 @@
+.projects{
+    position:relative;
+    padding:120px 0;
+    background: var(--background);
+    overflow:hidden;
+    border-bottom: 8px solid var(--gold);
+}
+
+.projects::before{
+    content:"";
+    position:absolute;
+    left:-200px;
+    top:-200px;
+    width:450px;
+    height:450px;
+    background:radial-gradient(circle,
+    rgba(255,199,44,.05),
+    transparent 70%);
+}
+
+.projects::after{
+    content:"";
+    position:absolute;
+    right:-200px;
+    bottom:-200px;
+    width:420px;
+    height:420px;
+    background:radial-gradient(circle,
+    rgba(15,23,42,.03),
+    transparent 70%);
+}
+
+/* ========================= */
+
+.heading{
+    text-align:center;
+    max-width:760px;
+    margin:auto;
+    margin-bottom:70px;
+    position:relative;
+    z-index:2;
+}
+
+.line{
+    width:120px;
+    height:4px;
+    background: var(--gold);
+    border: 1px solid var(--primary);
+    margin:22px auto;
+    border-radius:var(--radius-sm);
+}
+
+.heading h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size:clamp(2.8rem,5vw,4.2rem);
+    color:var(--text-dark);
+    line-height:1.1;
+    margin-bottom:20px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.heading p{
+    color:var(--text-light);
+    line-height:1.75;
+}
+
+/* ========================= */
+
+.statistics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-bottom:70px;
+}
+
+.statCard{
+    background: var(--gold);
+    border: 3px solid var(--primary);
+    padding:35px;
+    border-radius: var(--radius-sm);
+    text-align:center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.statCard:hover{
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--primary);
+}
+
+.statCard h3{
+    color: var(--primary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size:3rem;
+    font-weight: 800;
+    margin-bottom:10px;
+}
+
+.statCard span{
+    color: var(--primary);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* ========================= */
+
+.projectGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px;
+}
+
+/* ========================= */
+
+.buttonWrapper{
+    text-align:center;
+    margin-top:70px;
+}
+
+/* ========================= */
+
+@media(max-width:1100px){
+  .projectGrid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:768px){
+  .projects{
+    padding:100px 0;
+  }
+  .statistics{
+    grid-template-columns:1fr;
+  }
+  .heading h2{
+    font-size:2.3rem;
+  }
+}

@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Black+Ops+One&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter', sans-serif;
+    background:var(--background);
+    color:var(--text-dark);
+    overflow-x:hidden;
+    position: relative;
+    /* Subtle industrial concrete grid paper background */
+    background-image: 
+      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+input,
+textarea{
+    outline:none;
+    font-family:inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--primary);
+}
+
+/* Custom Scrollbar for Industrial Caution Theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+::-webkit-scrollbar-thumb {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--gold),
+    var(--gold) 8px,
+    #111116 8px,
+    #111116 16px
+  );
+  border: 1px solid var(--primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--gold-hover),
+    var(--gold-hover) 8px,
+    #111116 8px,
+    #111116 16px
+  );
+}
+
+/* ==========================================
+   CONSTRUCTION / HAZARD THEME UTILITIES
+   ========================================== */
+
+/* Scrolling caution tape */
+.caution-tape-marquee {
+  background: #111116;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  user-select: none;
+  padding: 12px 0;
+}
+
+.caution-tape-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: scroll-tape 25s linear infinite;
+  gap: 30px;
+}
+
+.caution-tape-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+}
+
+.caution-tape-text::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gold),
+    var(--gold) 5px,
+    #111116 5px,
+    #111116 10px
+  );
+  border: 1px solid var(--gold);
+}
+
+@keyframes scroll-tape {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Blueprint panel overlay */
+.blueprint-panel {
+  background-color: #0b1d3a;
+  background-image: 
+    linear-gradient(rgba(0, 180, 216, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border: 3px solid var(--primary);
+  box-shadow: var(--shadow-md);
+  color: #ffffff !important;
+  position: relative;
+}
+
+/* Metal rivet details for container corners */
+.rivet-box {
+  position: relative;
+  border: 3px solid var(--primary);
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.rivet-box::before,
+.rivet-box::after,
+.rivet-box-inner::before,
+.rivet-box-inner::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #475569;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.rivet-box::before { top: 8px; left: 8px; }
+.rivet-box::after { top: 8px; right: 8px; }
+
+/* Stencil badge */
+.stencil-badge {
+  font-family: 'Black Ops One', cursive;
+  background: var(--gold);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 2px 2px 0px var(--primary);
+}

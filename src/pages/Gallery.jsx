@@ -1,0 +1,333 @@
+import { useState } from "react";
+import PageHero from "../components/common/PageHero/PageHero";
+import gallery from "../data/gallery";
+import { FaSearchPlus, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+function Gallery() {
+  const [filter, setFilter] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const categories = ["All", "Residential", "Commercial", "Construction", "Interior"];
+
+  const filteredGallery = filter === "All"
+    ? gallery
+    : gallery.filter(item => item.category.toLowerCase() === filter.toLowerCase());
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % filteredGallery.length);
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + filteredGallery.length) % filteredGallery.length);
+  };
+
+  return (
+    <main>
+      <PageHero
+        tag="Gallery"
+        title="Project Showcase Gallery"
+        description="Take a visual tour of our completed and ongoing construction projects, structural foundations, and interior spaces."
+      />
+
+      <section style={{ padding: "80px 0", background: "var(--background)" }}>
+        <div className="container">
+          {/* Category Filter Bar */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "15px",
+              flexWrap: "wrap",
+              marginBottom: "50px",
+            }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                style={{
+                  padding: "12px 28px",
+                  borderRadius: "var(--radius-md)",
+                  fontWeight: "600",
+                  fontSize: "15px",
+                  border: filter === cat ? "none" : "1px solid var(--border)",
+                  backgroundColor: filter === cat ? "var(--gold)" : "white",
+                  color: filter === cat ? "white" : "var(--primary)",
+                  boxShadow: filter === cat ? "0 10px 20px rgba(197, 160, 89, 0.2)" : "none",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  if (filter !== cat) {
+                    e.currentTarget.style.borderColor = "var(--gold)";
+                    e.currentTarget.style.color = "var(--gold)";
+                  }
+                }}
+                onMouseOut={(e) => {
+                  if (filter !== cat) {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.color = "var(--primary)";
+                  }
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid Layout */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
+              gap: "25px",
+            }}
+          >
+            {filteredGallery.map((item, index) => (
+              <div
+                key={item.id}
+                onClick={() => openLightbox(index)}
+                style={{
+                  position: "relative",
+                  borderRadius: "var(--radius-md)",
+                  overflow: "hidden",
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+                  aspectRatio: "4/3",
+                  cursor: "pointer",
+                  transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "scale(1.03)";
+                  const overlay = e.currentTarget.querySelector(".gallery-overlay");
+                  if (overlay) overlay.style.opacity = "1";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  const overlay = e.currentTarget.querySelector(".gallery-overlay");
+                  if (overlay) overlay.style.opacity = "0";
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.6s ease",
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <div
+                  className="gallery-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: "0",
+                    background: "linear-gradient(rgba(17, 20, 23, 0.2), rgba(17, 20, 23, 0.8))",
+                    opacity: "0",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    padding: "25px",
+                    transition: "opacity 0.4s ease",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "var(--gold)",
+                      fontSize: "0.85rem",
+                      fontWeight: "600",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    {item.category}
+                  </span>
+                  <h3
+                    style={{
+                      color: "white",
+                      fontSize: "1.2rem",
+                      fontWeight: "600",
+                      fontFamily: "'Poppins', sans-serif",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "20px",
+                      right: "20px",
+                      background: "rgba(255, 255, 255, 0.25)",
+                      backdropFilter: "blur(5px)",
+                      color: "white",
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    <FaSearchPlus />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {filteredGallery.length === 0 && (
+            <div style={{ textAlign: "center", padding: "60px 0" }}>
+              <p style={{ color: "var(--text-light)", fontSize: "1.1rem" }}>No images found under this category.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div
+          onClick={closeLightbox}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(17, 20, 23, 0.95)",
+            backdropFilter: "blur(10px)",
+            zIndex: 10000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
+          }}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            style={{
+              position: "absolute",
+              top: "25px",
+              right: "25px",
+              background: "none",
+              color: "white",
+              fontSize: "1.8rem",
+              cursor: "pointer",
+              transition: "transform 0.2s",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.15)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <FaTimes />
+          </button>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevImage}
+            style={{
+              position: "absolute",
+              left: "25px",
+              background: "rgba(255, 255, 255, 0.1)",
+              color: "white",
+              fontSize: "1.5rem",
+              width: "55px",
+              height: "55px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "background 0.3s",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.25)")}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)")}
+          >
+            <FaChevronLeft />
+          </button>
+
+          <button
+            onClick={nextImage}
+            style={{
+              position: "absolute",
+              right: "25px",
+              background: "rgba(255, 255, 255, 0.1)",
+              color: "white",
+              fontSize: "1.5rem",
+              width: "55px",
+              height: "55px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "background 0.3s",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.25)")}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)")}
+          >
+            <FaChevronRight />
+          </button>
+
+          {/* Image and Title container */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: "90%",
+              maxHeight: "85vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={filteredGallery[lightboxIndex].image}
+              alt={filteredGallery[lightboxIndex].title}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "75vh",
+                borderRadius: "var(--radius-md)",
+                objectFit: "contain",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+              }}
+            />
+            <h3
+              style={{
+                color: "white",
+                marginTop: "20px",
+                fontSize: "1.3rem",
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: "center",
+              }}
+            >
+              {filteredGallery[lightboxIndex].title}
+            </h3>
+            <span
+              style={{
+                color: "var(--gold)",
+                fontSize: "0.9rem",
+                marginTop: "5px",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+              }}
+            >
+              {filteredGallery[lightboxIndex].category}
+            </span>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}
+
+export default Gallery;
