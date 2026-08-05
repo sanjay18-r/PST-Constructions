@@ -10,7 +10,7 @@ function Team() {
 
         <div className={styles.heading}>
 
-          <span className={styles.tag}>
+          <span className="stencil-badge" style={{ marginBottom: "25px" }}>
             MEET OUR LEADERSHIP
           </span>
 

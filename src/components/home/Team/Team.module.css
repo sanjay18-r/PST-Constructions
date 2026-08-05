@@ -1,8 +1,9 @@
 .team {
   position: relative;
-  padding: 140px 0;
-  background: #ffffff;
+  padding: 120px 0;
+  background: var(--background);
   overflow: hidden;
+  border-bottom: 8px solid var(--gold);
 }
 
 /* Decorative Background */
@@ -15,7 +16,7 @@
   width: 450px;
   height: 450px;
   background: radial-gradient(circle,
-      rgba(197, 160, 89,.08),
+      rgba(255, 199, 44,.05),
       transparent 70%);
 }
 
@@ -27,13 +28,13 @@
   width: 420px;
   height: 420px;
   background: radial-gradient(circle,
-      rgba(17, 20, 23,.05),
+      rgba(15, 23, 42,.03),
       transparent 70%);
 }
 
 /* ==========================
    HEADING
-========================== */
+ ========================== */
 
 .heading {
   text-align: center;
@@ -43,41 +44,34 @@
   z-index: 2;
 }
 
-.tag {
-  display: inline-block;
-  padding: 10px 22px;
-  background: rgba(197, 160, 89,.12);
-  color: var(--gold);
-  border-radius: var(--radius-md);
-  font-size: .9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
 .line {
-  width: 90px;
+  width: 120px;
   height: 4px;
   margin: 20px auto 30px;
-  background: linear-gradient(90deg,var(--gold),transparent);
-  border-radius: var(--radius-md);
+  background: var(--gold);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
 }
 
 .heading h2 {
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2.7rem,5vw,4rem);
   color: var(--primary);
-  line-height: 1.15;
+  line-height: 1.1;
   margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .heading p {
   color: var(--text-light);
-  line-height: 1.9;
+  line-height: 1.75;
   font-size: 1.05rem;
 }
 
 /* ==========================
    GRID
-========================== */
+ ========================== */
 
 .teamGrid {
   display: grid;
@@ -89,30 +83,62 @@
 
 /* ==========================
    CARD
-========================== */
+ ========================== */
 
 .card {
+  position: relative;
   background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  border: 3px solid var(--primary);
   overflow: hidden;
-  transition: var(--transition);
-  box-shadow: 0 10px 30px rgba(0,0,0,.03);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Scrolling hazard border overlay on hover */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: var(--radius-sm);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--gold),
+    var(--gold) 10px,
+    #111116 10px,
+    #111116 20px
+  ) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+  background-size: 40px 40px;
+}
+
+.card:hover::after {
+  opacity: 1;
+  animation: borderStripeScroll 0.8s linear infinite;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: var(--gold);
-  box-shadow: 0 20px 40px rgba(197,160,89,.12);
+  transform: translateY(-10px) rotate(1.2deg);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
 }
 
 /* ==========================
    IMAGE
-========================== */
+ ========================== */
 
 .imageWrapper {
   position: relative;
   overflow: hidden;
+  border-bottom: 3px solid var(--primary);
 }
 
 .image {
@@ -120,90 +146,111 @@
   height: 380px;
   object-fit: cover;
   display: block;
-  transition: 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .card:hover .image {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 .experienceBadge {
   position: absolute;
   bottom: 18px;
   right: 18px;
-  background: linear-gradient(135deg,var(--gold),var(--gold-hover));
-  color: white;
-  padding: 10px 18px;
-  border-radius: var(--radius-md);
-  font-size: .9rem;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  background: var(--gold);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 800;
+  box-shadow: 2px 2px 0 var(--primary);
+  z-index: 6;
 }
 
 /* ==========================
    CONTENT
-========================== */
+ ========================== */
 
 .content {
   padding: 30px;
 }
 
 .content h3 {
-  font-size: 1.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
   color: var(--primary);
   margin-bottom: 10px;
-  transition: .3s;
+  transition: .2s;
 }
 
 .card:hover h3 {
-  color: var(--gold);
+  color: var(--gold-hover);
 }
 
 .designation {
   display: inline-block;
-  color: var(--gold);
-  font-weight: 600;
+  color: var(--gold-hover);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
   margin-bottom: 18px;
 }
 
 .content p {
   color: var(--text-light);
-  line-height: 1.8;
+  line-height: 1.75;
   font-size: .97rem;
 }
 
 /* ==========================
    RESPONSIVE
-========================== */
+ ========================== */
 
 @media (max-width:1100px){
-
-.teamGrid{
-grid-template-columns:repeat(2,1fr);
-}
-
+  .teamGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
 @media (max-width:768px){
-
-.team{
-padding:100px 0;
+  .team{
+    padding:100px 0;
+  }
+  .heading h2{
+    font-size:2.3rem;
+  }
+  .teamGrid{
+    grid-template-columns:1fr;
+  }
+  .image{
+    height:320px;
+  }
+  .content{
+    padding:25px;
+  }
 }
 
-.heading h2{
-font-size:2.3rem;
+@keyframes borderStripeScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
 }
 
-.teamGrid{
-grid-template-columns:1fr;
-}
-
-.image{
-height:320px;
-}
-
-.content{
-padding:25px;
-}
-
+@keyframes drillVibe {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-2px, 1px) rotate(-1deg); }
+  30% { transform: translate(1px, -1px) rotate(1deg); }
+  45% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+  60% { transform: translate(2px, -1px) rotate(0.5deg); }
+  75% { transform: translate(-1px, -1px) rotate(-1deg); }
+  90% { transform: translate(2px, 1px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }

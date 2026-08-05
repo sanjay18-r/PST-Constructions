@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
-import defaultBg from "../../../assets/images/projects/completed/villa-chennai.jpg";
+import defaultBg from "../../../assets/images/projects/completed/premium-apartment.jpg";
 import styles from "./PageHero.module.css";
 
-function PageHero({ title, tag, description, bgImage }) {
+function PageHero({ title, tag, description, bgImage, bgPosition = "center" }) {
   const backgroundStyle = {
-    backgroundImage: `linear-gradient(rgba(17, 20, 23, 0.8), rgba(17, 20, 23, 0.85)), url(${bgImage || defaultBg})`,
+    backgroundImage: `linear-gradient(180deg, rgba(9, 13, 22, 0.3) 0%, rgba(9, 13, 22, 0.76) 100%), url(${bgImage || defaultBg})`,
+    backgroundPosition: bgPosition,
   };
 
   return (

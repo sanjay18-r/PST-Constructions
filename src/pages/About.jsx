@@ -2,6 +2,7 @@ import PageHero from "../components/common/PageHero/PageHero";
 import AboutSection from "../components/home/About/About";
 import Team from "../components/home/Team/Team";
 import ConstructionProcess from "../components/home/ConstructionProcess/ConstructionProcess";
+import bgImage from "../assets/images/projects/ongoing/highrise-apartment.jpg";
 
 function About() {
   return (
@@ -10,6 +11,8 @@ function About() {
         tag="About PST Builders"
         title="Building Trust, Creating Landmarks"
         description="With over 23 years of excellence, PST Builders & Constructions is dedicated to delivering premium residential and commercial structures with uncompromising quality."
+        bgImage={bgImage}
+        bgPosition="center 30%"
       />
 
       <AboutSection />

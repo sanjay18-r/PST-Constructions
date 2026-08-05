@@ -1,4 +1,5 @@
 import PageHero from "../components/common/PageHero/PageHero";
+import bgImage from "../assets/images/projects/completed/premium-apartment.jpg";
 
 function PrivacyPolicy() {
   return (
@@ -7,6 +8,8 @@ function PrivacyPolicy() {
         tag="Legal"
         title="Privacy Policy"
         description="Learn how PST Builders & Constructions handles and protects your personal information."
+        bgImage={bgImage}
+        bgPosition="center 35%"
       />
 
       <section style={{ padding: "80px 0", background: "var(--background)", color: "var(--text-dark)", lineHeight: "1.8" }}>

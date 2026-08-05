@@ -14,6 +14,7 @@ function ProjectDetails() {
           tag="Error"
           title="Project Not Found"
           description="The construction project you are looking for could not be found or has been relocated."
+          bgPosition="center 40%"
         />
         <section style={{ padding: "80px 0", textAlign: "center" }}>
           <div className="container">
@@ -65,6 +66,7 @@ function ProjectDetails() {
         title={project.title}
         description={`Premium ${project.category.toLowerCase()} construction located in ${project.location}.`}
         bgImage={project.image}
+        bgPosition="center 40%"
       />
 
       <section style={{ padding: "80px 0" }}>

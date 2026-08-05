@@ -166,8 +166,8 @@ const projects = [
     location: "Chennai",
     category: "Apartments",
     year: "2026",
-    status: "Ongoing2",
-    color: "ongoing2",
+    status: "Ongoing",
+    color: "ongoing",
     image: ongoing2,
     featured: false,
     description:

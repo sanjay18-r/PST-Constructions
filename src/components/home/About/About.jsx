@@ -64,13 +64,13 @@ function About() {
 
         <div className={styles.left} ref={leftRef}>
 
-          <span className={styles.tag}>
+          <span className="stencil-badge" style={{ marginBottom: "25px" }}>
             ABOUT PST BUILDERS
           </span>
 
           <div className={styles.line}></div>
 
-          <h2>
+          <h2 className="jackhammer-text">
             Crafting Spaces.
             <br />
             Building Trust.
@@ -87,19 +87,19 @@ function About() {
           <div className={styles.features}>
 
             <div className={styles.feature}>
-              ✔ Premium Quality Construction
+              <span>▶</span> Premium Quality Construction
             </div>
 
             <div className={styles.feature}>
-              ✔ Experienced Engineering Team
+              <span>▶</span> Experienced Engineering Team
             </div>
 
             <div className={styles.feature}>
-              ✔ On-Time Project Delivery
+              <span>▶</span> On-Time Project Delivery
             </div>
 
             <div className={styles.feature}>
-              ✔ Transparent Project Management
+              <span>▶</span> Transparent Project Management
             </div>
 
           </div>

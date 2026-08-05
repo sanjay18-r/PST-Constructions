@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageHero from "../components/common/PageHero/PageHero";
 import gallery from "../data/gallery";
 import { FaSearchPlus, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import bgImage from "../assets/images/projects/completed/commercial-office.jpg";
 
 function Gallery() {
   const [filter, setFilter] = useState("All");
@@ -37,6 +38,8 @@ function Gallery() {
         tag="Gallery"
         title="Project Showcase Gallery"
         description="Take a visual tour of our completed and ongoing construction projects, structural foundations, and interior spaces."
+        bgImage={bgImage}
+        bgPosition="center 40%"
       />
 
       <section style={{ padding: "80px 0", background: "var(--background)" }}>
@@ -57,26 +60,31 @@ function Gallery() {
                 onClick={() => setFilter(cat)}
                 style={{
                   padding: "12px 28px",
-                  borderRadius: "var(--radius-md)",
-                  fontWeight: "600",
-                  fontSize: "15px",
-                  border: filter === cat ? "none" : "1px solid var(--border)",
+                  borderRadius: "var(--radius-sm)",
+                  fontWeight: "800",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: "1.2rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "1px",
+                  border: "3px solid var(--primary)",
                   backgroundColor: filter === cat ? "var(--gold)" : "white",
-                  color: filter === cat ? "white" : "var(--primary)",
-                  boxShadow: filter === cat ? "0 10px 20px rgba(197, 160, 89, 0.2)" : "none",
+                  color: "var(--primary)",
+                  boxShadow: filter === cat ? "var(--shadow-sm)" : "none",
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.2s ease",
                 }}
                 onMouseOver={(e) => {
                   if (filter !== cat) {
-                    e.currentTarget.style.borderColor = "var(--gold)";
-                    e.currentTarget.style.color = "var(--gold)";
+                    e.currentTarget.style.backgroundColor = "var(--gold-hover)";
+                    e.currentTarget.style.transform = "translate(2px, 2px)";
+                    e.currentTarget.style.boxShadow = "2px 2px 0px var(--primary)";
                   }
                 }}
                 onMouseOut={(e) => {
                   if (filter !== cat) {
-                    e.currentTarget.style.borderColor = "var(--border)";
-                    e.currentTarget.style.color = "var(--primary)";
+                    e.currentTarget.style.backgroundColor = "white";
+                    e.currentTarget.style.transform = "none";
+                    e.currentTarget.style.boxShadow = "none";
                   }
                 }}
               >
@@ -97,22 +105,16 @@ function Gallery() {
               <div
                 key={item.id}
                 onClick={() => openLightbox(index)}
+                className="blueprint-card-hover"
                 style={{
-                  position: "relative",
-                  borderRadius: "var(--radius-md)",
-                  overflow: "hidden",
-                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
                   aspectRatio: "4/3",
                   cursor: "pointer",
-                  transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "scale(1.03)";
                   const overlay = e.currentTarget.querySelector(".gallery-overlay");
                   if (overlay) overlay.style.opacity = "1";
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
                   const overlay = e.currentTarget.querySelector(".gallery-overlay");
                   if (overlay) overlay.style.opacity = "0";
                 }}
@@ -124,7 +126,6 @@ function Gallery() {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    transition: "transform 0.6s ease",
                   }}
                 />
 
@@ -141,15 +142,17 @@ function Gallery() {
                     justifyContent: "flex-end",
                     padding: "25px",
                     transition: "opacity 0.4s ease",
+                    zIndex: 4,
                   }}
                 >
                   <span
                     style={{
                       color: "var(--gold)",
-                      fontSize: "0.85rem",
-                      fontWeight: "600",
+                      fontSize: "0.95rem",
+                      fontWeight: "800",
+                      fontFamily: "'Barlow Condensed', sans-serif",
                       textTransform: "uppercase",
-                      letterSpacing: "1px",
+                      letterSpacing: "1.5px",
                       marginBottom: "6px",
                     }}
                   >
@@ -158,9 +161,11 @@ function Gallery() {
                   <h3
                     style={{
                       color: "white",
-                      fontSize: "1.2rem",
-                      fontWeight: "600",
-                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: "1.5rem",
+                      fontWeight: "800",
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px",
                     }}
                   >
                     {item.title}
@@ -170,16 +175,17 @@ function Gallery() {
                       position: "absolute",
                       top: "20px",
                       right: "20px",
-                      background: "rgba(255, 255, 255, 0.25)",
-                      backdropFilter: "blur(5px)",
-                      color: "white",
+                      background: "var(--gold)",
+                      border: "2px solid var(--primary)",
+                      color: "var(--primary)",
                       width: "40px",
                       height: "40px",
-                      borderRadius: "50%",
+                      borderRadius: "var(--radius-sm)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: "1rem",
+                      boxShadow: "2px 2px 0 var(--primary)",
                     }}
                   >
                     <FaSearchPlus />
@@ -305,8 +311,11 @@ function Gallery() {
               style={{
                 color: "white",
                 marginTop: "20px",
-                fontSize: "1.3rem",
-                fontFamily: "'Poppins', sans-serif",
+                fontSize: "1.8rem",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: "800",
+                textTransform: "uppercase",
+                letterSpacing: "1.5px",
                 textAlign: "center",
               }}
             >
@@ -315,10 +324,12 @@ function Gallery() {
             <span
               style={{
                 color: "var(--gold)",
-                fontSize: "0.9rem",
+                fontSize: "1.05rem",
                 marginTop: "5px",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: "800",
                 textTransform: "uppercase",
-                letterSpacing: "1px",
+                letterSpacing: "1.5px",
               }}
             >
               {filteredGallery[lightboxIndex].category}

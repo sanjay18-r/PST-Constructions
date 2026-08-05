@@ -200,3 +200,71 @@ textarea{
   gap: 8px;
   box-shadow: 2px 2px 0px var(--primary);
 }
+
+/* ==========================================
+   HEADING & TEXT COLOR TRANSITION
+   ========================================== */
+
+h1, h2, h3, h4, .jackhammer-text {
+  transition: color 0.25s ease;
+}
+
+h1:hover, 
+h2:hover, 
+h3:hover, 
+h4:hover, 
+.jackhammer-text:hover {
+  color: var(--gold-hover);
+  cursor: pointer;
+}
+
+/* Steel Column Pile Driver Stamp-in Entrance */
+.steel-stamp {
+  animation: steelStamp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes steelStamp {
+  0% {
+    transform: translateY(-120px) scaleY(1.4);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  50% {
+    transform: translateY(0) scaleY(0.85);
+    opacity: 1;
+    filter: blur(0);
+  }
+  75% {
+    transform: translateY(-20px) scaleY(1.15);
+  }
+  90% {
+    transform: translateY(0) scaleY(0.95);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Global Blueprint Image Hover Layout */
+.blueprint-card-hover {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--primary) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 1;
+}
+
+.blueprint-card-hover img {
+  transition: transform 0.4s ease !important;
+}
+
+.blueprint-card-hover:hover img {
+  transform: scale(1.05) !important;
+}
+
+.blueprint-card-hover:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px var(--primary) !important;
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageHero from "../components/common/PageHero/PageHero";
 import projects from "../data/projects";
 import ProjectCard from "../components/projects/ProjectCard/ProjectCard";
+import bgImage from "../assets/images/projects/completed/apartment-building.jpg";
 
 function Projects() {
   const [filter, setFilter] = useState("All");
@@ -18,6 +19,8 @@ function Projects() {
         tag="Our Works"
         title="Featured Construction Projects"
         description="Browse through our portfolio of premium residential villas, commercial complexes, and turnkey developments."
+        bgImage={bgImage}
+        bgPosition="center 35%"
       />
 
       <section style={{ padding: "80px 0", background: "var(--background)" }}>
