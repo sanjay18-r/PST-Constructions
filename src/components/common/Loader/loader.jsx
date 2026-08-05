@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { FaExclamationTriangle } from "react-icons/fa";
 import styles from "./Loader.module.css";
-
 import logo from "../../../assets/logos/logo-white.png";
 
 const Loader = ({ finishLoading }) => {
