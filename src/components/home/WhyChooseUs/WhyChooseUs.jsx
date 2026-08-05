@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./WhyChooseUs.module.css";
-import whyChooseUs from "../../../data/whyChooseUs";
+import whyChooseUs from "../../../data/WhyChooseUs";
 
 gsap.registerPlugin(ScrollTrigger);
 

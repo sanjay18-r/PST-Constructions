@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import styles from "./Navbar.module.css";
+import styles from "./navbar.module.css";
 import logo from "../../../assets/logos/logo-white.png";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
