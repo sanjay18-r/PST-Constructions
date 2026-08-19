@@ -127,16 +127,18 @@
     display:flex;
     align-items:center;
     gap:15px;
-    background:var(--background);
-    padding:16px 20px;
+    background:rgba(248, 250, 252, 0.8);
+    padding:14px 18px;
     border-radius:var(--radius-sm);
-    margin-bottom:20px;
-    border:1px solid var(--border);
+    margin-bottom:18px;
+    border:1px solid #CBD5E1;
     transition:var(--transition);
 }
 
 .inputGroup:focus-within{
     border-color:var(--gold);
+    background:#ffffff !important;
+    box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.2);
 }
 
 .inputGroup svg{
@@ -150,28 +152,50 @@
     width:100%;
     border:none;
     outline:none;
-    background:transparent;
+    background:transparent !important;
     font-size:1rem;
-    color:var(--text-dark);
+    color:var(--text-dark) !important;
+}
+
+.inputGroup select option {
+    background: #ffffff;
+    color: var(--text-dark);
 }
 
 textarea{
     width:100%;
-    padding:20px;
-    border:1px solid var(--border);
+    padding:16px 18px;
+    border:1px solid #CBD5E1;
     outline:none;
     resize:none;
     border-radius:var(--radius-sm);
-    background:var(--background);
-    margin-bottom:25px;
+    background:rgba(248, 250, 252, 0.8) !important;
+    margin-bottom:20px;
     transition:var(--transition);
     font-size:1rem;
-    color:var(--text-dark);
+    color:var(--text-dark) !important;
     font-family:inherit;
 }
 
 textarea:focus{
     border-color:var(--gold);
+    background:#ffffff !important;
+    color:var(--text-dark) !important;
+    box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.2);
+}
+
+.inputGroup input:-webkit-autofill,
+.inputGroup input:-webkit-autofill:hover, 
+.inputGroup input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+.inputGroup select:-webkit-autofill,
+.inputGroup select:-webkit-autofill:hover,
+.inputGroup select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #f8fafc inset !important;
+  -webkit-text-fill-color: #0f172a !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* ========================= */
