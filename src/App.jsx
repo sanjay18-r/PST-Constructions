@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 // Common Components
 import Loader from "./components/common/Loader/loader";
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="bottom-right" reverseOrder={false} />
       <ScrollToTop />
       <Navbar />
 

@@ -10,7 +10,7 @@ A modern, responsive, and visually dynamic web application built for **PST Build
 - 📱 **Fully Responsive Layout**: Crafted with CSS Modules and mobile-first design principles for seamless viewing across smartphones, tablets, and desktops.
 - 🏢 **Dynamic Project Portfolio**: Filterable project listings with individual detailed pages for completed, ongoing, and upcoming developments.
 - 🖼️ **Interactive Image Gallery**: Categorized showcase of residential, commercial, interior, and ongoing construction work.
-- ✉️ **Contact & Enquiry Handling**: Interactive contact forms integrated with instant toast notifications (`react-hot-toast`).
+- ✉️ **Contact & Enquiry Handling**: Serverless contact forms integrated with Web3Forms email delivery, direct WhatsApp business inquiry triggers, and real-time toast notifications (`react-hot-toast`).
 - ⚡ **High Performance & Smooth Animations**: Built on **Vite** and **React 19**, featuring smooth scrolling, counter animations (`react-countup`), carousel sliders (`swiper`), and GSAP effects.
 - 🔍 **SEO & Accessibility**: Clean semantic HTML structure, accessibility-first component layout, and optimized routing.
 
