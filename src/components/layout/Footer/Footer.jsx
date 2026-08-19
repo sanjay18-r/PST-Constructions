@@ -40,20 +40,16 @@ function Footer() {
 
             <div className={styles.socials}>
 
-              <a href="#">
-                <FaFacebookF />
-              </a>
-
-              <a href="#">
-                <FaInstagram />
-              </a>
-
-              <a href="#">
-                <FaLinkedinIn />
-              </a>
-
-              <a href="#">
+              <a href="https://wa.me/918682880208" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <FaWhatsapp />
+              </a>
+
+              <a href="tel:+918682880208" aria-label="Phone">
+                <FaPhoneAlt />
+              </a>
+
+              <a href="mailto:a.palaniconstructions@gmail.com" aria-label="Email">
+                <FaEnvelope />
               </a>
 
             </div>
@@ -128,7 +124,7 @@ function Footer() {
 
                 <FaPhoneAlt />
 
-                <span>+91 8682880208</span>
+                <a href="tel:+918682880208" style={{ color: "inherit", textDecoration: "none" }}>+91 8682880208</a>
 
               </li>
 
@@ -136,7 +132,7 @@ function Footer() {
 
                 <FaEnvelope />
 
-                <span>a.palaniconstructions@gmail.com</span>
+                <a href="mailto:a.palaniconstructions@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>a.palaniconstructions@gmail.com</a>
 
               </li>
 

@@ -66,7 +66,7 @@ function Contact() {
 
                 <h3>Phone</h3>
 
-                <p>+91 8682880208</p>
+                <p><a href="tel:+918682880208" style={{ color: "inherit", textDecoration: "none" }}>+91 8682880208</a></p>
 
               </div>
 
@@ -80,7 +80,7 @@ function Contact() {
 
                 <h3>Email</h3>
 
-                <p>a.palaniconstructions@gmail.com</p>
+                <p><a href="mailto:a.palaniconstructions@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>a.palaniconstructions@gmail.com</a></p>
 
               </div>
 
