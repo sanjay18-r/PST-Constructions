@@ -71,16 +71,24 @@
 .cta{
     background:var(--gold);
     color:var(--primary);
-    padding:10px 24px;
+    padding:8px 20px;
     border-radius:var(--radius-sm);
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1rem;
     text-transform: uppercase;
     font-weight:800;
     letter-spacing: 0.5px;
     border: 2px solid var(--primary);
     box-shadow: var(--shadow-sm);
     transition:var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    max-width: max-content !important;
+    flex-shrink: 0;
 }
 
 .cta:hover{

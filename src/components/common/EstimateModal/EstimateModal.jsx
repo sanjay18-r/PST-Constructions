@@ -1,10 +1,21 @@
-import { useState, useEffect } from "react";
-import { FaUser, FaPhoneAlt, FaEnvelope, FaBuilding, FaRulerCombined, FaPaperPlane, FaWhatsapp, FaTimes } from "react-icons/fa";
+import { useState, useEffect, useCallback } from "react";
+import {
+  FaUser,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaBuilding,
+  FaRulerCombined,
+  FaPaperPlane,
+  FaWhatsapp,
+  FaTimes,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 import toast from "react-hot-toast";
 import styles from "./EstimateModal.module.css";
 
 function EstimateModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showConfirmExit, setShowConfirmExit] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -15,12 +26,60 @@ function EstimateModal() {
   });
   const [loading, setLoading] = useState(false);
 
+  // Check if user entered any details in the form
+  const hasUnsavedChanges = useCallback(() => {
+    return (
+      formData.name.trim() !== "" ||
+      formData.phone.trim() !== "" ||
+      formData.email.trim() !== "" ||
+      formData.area.trim() !== "" ||
+      formData.message.trim() !== ""
+    );
+  }, [formData]);
+
+  // Request to close modal (checks unsaved changes first)
+  const handleRequestClose = useCallback(() => {
+    if (hasUnsavedChanges()) {
+      setShowConfirmExit(true);
+    } else {
+      setIsOpen(false);
+      setShowConfirmExit(false);
+    }
+  }, [hasUnsavedChanges]);
+
+  // Keyboard actions: Listen for ESC key
   useEffect(() => {
-    const handleOpen = () => setIsOpen(true);
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isOpen) {
+        e.preventDefault();
+        if (showConfirmExit) {
+          setShowConfirmExit(false);
+        } else {
+          handleRequestClose();
+        }
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, showConfirmExit, handleRequestClose]);
+
+  // Event listener to open modal from anywhere in app
+  useEffect(() => {
+    const handleOpen = () => {
+      setIsOpen(true);
+      setShowConfirmExit(false);
+    };
     window.addEventListener("open-estimate-modal", handleOpen);
     return () => window.removeEventListener("open-estimate-modal", handleOpen);
   }, []);
 
+  // Lock scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -39,7 +98,23 @@ function EstimateModal() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const closeModal = () => setIsOpen(false);
+  // Discard changes & close completely
+  const confirmExitModal = () => {
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      service: "Residential Construction",
+      area: "",
+      message: "",
+    });
+    setShowConfirmExit(false);
+    setIsOpen(false);
+  };
+
+  const cancelExit = () => {
+    setShowConfirmExit(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,33 +154,27 @@ function EstimateModal() {
 
       if (result.success || response.ok) {
         toast.success("Estimate request sent successfully! We will contact you shortly.", { id: toastId });
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          service: "Residential Construction",
-          area: "",
-          message: "",
-        });
-        closeModal();
+        confirmExitModal();
       } else {
         toast.success("Estimate request submitted! Our team will contact you soon.", { id: toastId });
-        closeModal();
+        confirmExitModal();
       }
     } catch (error) {
       toast.success("Estimate details submitted! We will reach out shortly.", { id: toastId });
-      closeModal();
+      confirmExitModal();
     } finally {
       setLoading(false);
     }
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello PST Builders! I would like a Free Estimate for ${formData.service}${formData.area ? ` (${formData.area} Sq. Ft.)` : ""}. My name is ${formData.name || "Customer"}.`
+    `Hello PST Builders! I would like a Free Estimate for ${formData.service}${
+      formData.area ? ` (${formData.area} Sq. Ft.)` : ""
+    }.${formData.name ? ` Name: ${formData.name}` : ""}`
   );
 
   return (
-    <div className={styles.overlay} onClick={closeModal}>
+    <div className={styles.overlay} onClick={handleRequestClose}>
       <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className={styles.header}>
@@ -113,7 +182,12 @@ function EstimateModal() {
             <h3>Get Free Project Estimate</h3>
             <p>PST BUILDERS & CONSTRUCTIONS</p>
           </div>
-          <button className={styles.closeBtn} onClick={closeModal} aria-label="Close">
+          <button
+            className={styles.closeBtn}
+            onClick={handleRequestClose}
+            aria-label="Close modal"
+            type="button"
+          >
             <FaTimes />
           </button>
         </div>
@@ -202,11 +276,30 @@ function EstimateModal() {
               rel="noopener noreferrer"
               className={styles.whatsappBtn}
             >
-              <FaWhatsapp size={20} />
+              <FaWhatsapp size={18} />
               Instant Estimate on WhatsApp
             </a>
           </form>
         </div>
+
+        {/* Confirmation prompt overlay if user attempts to close with unsaved details */}
+        {showConfirmExit && (
+          <div className={styles.confirmOverlay} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.confirmBox}>
+              <FaExclamationTriangle className={styles.warningIcon} />
+              <h4>Discard Estimate Request?</h4>
+              <p>You have entered details in your estimate request. Would you really like to cancel and exit?</p>
+              <div className={styles.confirmActions}>
+                <button type="button" className={styles.keepEditingBtn} onClick={cancelExit}>
+                  Keep Editing
+                </button>
+                <button type="button" className={styles.discardBtn} onClick={confirmExitModal}>
+                  Discard & Exit
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
