@@ -178,7 +178,7 @@ textarea:focus{
 
 button{
     width:100%;
-    padding:18px;
+    padding:13px 22px;
     border:none;
     border-radius:var(--radius-sm);
     background:linear-gradient(
@@ -187,11 +187,11 @@ button{
         var(--gold-hover)
     );
     color:white;
-    font-size:1rem;
+    font-size:0.95rem;
     font-weight:600;
     cursor:pointer;
     transition:var(--transition);
-    box-shadow:0 8px 20px rgba(197,160,89,.20);
+    box-shadow:0 6px 16px rgba(197,160,89,.20);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -199,8 +199,8 @@ button{
 }
 
 button:hover:not(:disabled){
-    transform:translateY(-3px);
-    box-shadow:0 12px 25px rgba(197,160,89,.35);
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(197,160,89,.35);
 }
 
 button:disabled {
@@ -212,7 +212,7 @@ button:disabled {
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 20px 0;
+    margin: 16px 0;
     color: var(--text-light);
     font-size: 0.85rem;
     font-weight: 500;
@@ -235,7 +235,7 @@ button:disabled {
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 16px;
+    padding: 12px 20px;
     border-radius: var(--radius-sm);
     background: #25D366;
     color: white;
