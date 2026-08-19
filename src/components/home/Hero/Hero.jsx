@@ -72,9 +72,12 @@ function Hero() {
               View Projects
             </Link>
 
-            <Link to="/contact" className={styles.secondaryBtn}>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-estimate-modal"))}
+              className={styles.secondaryBtn}
+            >
               Get Free Estimate
-            </Link>
+            </button>
 
           </div>
 

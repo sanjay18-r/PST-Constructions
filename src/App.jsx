@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 // Common Components
 import Loader from "./components/common/Loader/loader";
 import ScrollToTop from "./components/common/ScrollToTop";
+import EstimateModal from "./components/common/EstimateModal/EstimateModal";
 import Navbar from "./components/layout/Navbar/navbar";
 import Footer from "./components/layout/Footer/Footer";
 
@@ -29,6 +30,7 @@ function App() {
   return (
     <>
       <Toaster position="bottom-right" reverseOrder={false} />
+      <EstimateModal />
       <ScrollToTop />
       <Navbar />
 

@@ -128,7 +128,7 @@ function Footer() {
 
                 <FaPhoneAlt />
 
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 8682880208</span>
 
               </li>
 
@@ -136,7 +136,7 @@ function Footer() {
 
                 <FaEnvelope />
 
-                <span>info@pstbuilders.com</span>
+                <span>a.palaniconstructions@gmail.com</span>
 
               </li>
 

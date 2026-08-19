@@ -23,13 +23,13 @@ function CTA({
 
           <p>{description}</p>
 
-          <Link
-            to={buttonLink}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-estimate-modal"))}
             className={styles.button}
           >
             {buttonText}
             <FaArrowRight />
-          </Link>
+          </button>
 
         </div>
 

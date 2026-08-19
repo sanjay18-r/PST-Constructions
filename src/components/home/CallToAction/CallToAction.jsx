@@ -55,13 +55,13 @@ function CallToAction() {
 
           <div className={styles.buttons}>
 
-            <Link
-              to="/contact"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-estimate-modal"))}
               className={styles.primaryBtn}
             >
               Get Free Estimate
               <FaArrowRight />
-            </Link>
+            </button>
 
             <Link
               to="/projects"

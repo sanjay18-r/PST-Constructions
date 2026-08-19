@@ -42,7 +42,7 @@ PST-BUILDERS/
 ├── src/
 │   ├── assets/            # Project images, logos, and graphic assets
 │   ├── components/        # Modular UI components
-│   │   ├── common/        # Shared components (Loader, ScrollToTop, PageHero, etc.)
+│   │   ├── common/        # Shared components (Loader, EstimateModal, ScrollToTop, PageHero, etc.)
 │   │   ├── home/          # Home page sections (Hero, Services, Team, FAQ, etc.)
 │   │   ├── layout/        # Layout elements (Navbar, Footer)
 │   │   └── projects/      # Project-specific cards and elements

@@ -36,7 +36,7 @@ function PrivacyPolicy() {
 
           <h2 style={{ marginBottom: "20px", color: "var(--primary)", fontFamily: "'Poppins', sans-serif" }}>5. Contact Us</h2>
           <p style={{ marginBottom: "30px", color: "var(--text-light)" }}>
-            If you have any questions or concerns about this Privacy Policy, please contact us at <strong>info@pstbuilders.com</strong>.
+            If you have any questions or concerns about this Privacy Policy, please contact us at <strong>a.palaniconstructions@gmail.com</strong>.
           </p>
 
           <p style={{ fontSize: "0.9rem", color: "var(--text-light)", marginTop: "40px", borderTop: "1px solid var(--border)", paddingTop: "20px" }}>

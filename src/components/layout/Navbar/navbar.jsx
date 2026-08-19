@@ -104,9 +104,12 @@ function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <NavLink to="/contact" className={styles.cta}>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent("open-estimate-modal"))}
+          className={styles.cta}
+        >
           Get Free Estimate
-        </NavLink>
+        </button>
 
         {/* Mobile Hamburger Icon */}
         <button
@@ -137,13 +140,15 @@ function Navbar() {
               </li>
             ))}
             <li ref={(el) => (linksRef.current[menuItems.length] = el)}>
-              <NavLink
-                to="/contact"
+              <button
                 className={styles.mobileCta}
-                onClick={handleLinkClick}
+                onClick={() => {
+                  handleLinkClick();
+                  window.dispatchEvent(new CustomEvent("open-estimate-modal"));
+                }}
               >
                 Get Free Estimate
-              </NavLink>
+              </button>
             </li>
           </ul>
         </div>

@@ -80,7 +80,7 @@ function Contact() {
 
                 <h3>Email</h3>
 
-                <p>info@pstbuilders.com</p>
+                <p>a.palaniconstructions@gmail.com</p>
 
               </div>
 
